@@ -31,22 +31,6 @@ class Account extends Model
         }
     }
 
-    public static function updateFCM($fcm)
-    {
-        try {
-            DB::beginTransaction();
-            $t = Account::find(auth()->user()->id);
-            $t->fcm_token = $fcm;
-            $t->updated_at = time();
-            $t->save();
-
-            DB::commit();
-            return $t;
-        } catch (Throwable $e) {
-            return null;
-        }
-    }
-
     public static function addNew($data)
     {
         try {
